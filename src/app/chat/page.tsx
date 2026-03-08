@@ -485,7 +485,7 @@ export default function ChatPage({ params }: { params: Promise<{ sessionId: stri
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 6 12 12 16 14" />
             </svg>
-            {messages.filter(m => m.role !== 'system').length} messages exchanged
+            {messages.length} messages exchanged
           </div>
         </div>
       </div>

@@ -3,13 +3,15 @@ import { supabaseAdmin } from '@/lib/supabaseAdmin'
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+
+  const { id } = await params;
   try {
     const { data: profile, error } = await supabaseAdmin
       .from('profiles')
       .select('*')
-      .eq('id', params.id)
+      .eq('id', id)
       .single()
 
     if (error || !profile) {
